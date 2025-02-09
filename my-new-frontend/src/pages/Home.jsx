@@ -2,146 +2,141 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [activeFeature, setActiveFeature] = useState(null);
-
-  const innovativeFeatures = [
-    {
-      title: 'AI Service Matcher',
-      description: 'Intelligent algorithm matches you with the perfect service provider based on your home\'s unique needs and your preferences.',
-      icon: '🤖',
-      color: 'bg-gradient-to-r from-purple-600 to-indigo-600'
-    },
-    {
-      title: 'Eco-Service Credits',
-      description: 'Earn sustainability credits for choosing eco-friendly services and green service providers.',
-      icon: '🌿',
-      color: 'bg-gradient-to-r from-green-600 to-emerald-600'
-    },
-    {
-      title: 'Community Guardian Network',
-      description: 'Verified service providers undergo comprehensive background checks and community endorsements.',
-      icon: '🛡️',
-      color: 'bg-gradient-to-r from-blue-600 to-cyan-600'
-    },
-    {
-      title: 'Predictive Maintenance',
-      description: 'AI-powered analytics predict potential home maintenance issues before they become critical.',
-      icon: '🔮',
-      color: 'bg-gradient-to-r from-orange-600 to-red-600'
-    }
-  ];
-
-  const serviceCategories = [
+  const coreServices = [
     {
       name: 'Home Cleaning',
-      description: 'Transformative cleanliness tailored to your lifestyle',
+      description: 'Comprehensive cleaning solutions for every home',
       icon: '🧹',
       background: 'bg-gradient-to-br from-blue-500 to-blue-700'
     },
     {
       name: 'Home Cooking',
-      description: 'Culinary experiences crafted in your personal kitchen',
+      description: 'Professional chefs bringing culinary magic to your kitchen',
       icon: '👨‍🍳',
       background: 'bg-gradient-to-br from-green-500 to-green-700'
     },
     {
       name: 'Plumbing Services',
-      description: 'Precision solutions for your home\'s vital systems',
+      description: 'Expert solutions for all your plumbing needs',
       icon: '🚿',
       background: 'bg-gradient-to-br from-indigo-500 to-indigo-700'
     },
     {
       name: 'Electrical Services',
-      description: 'Powering your home with expert, safe solutions',
+      description: 'Safe and reliable electrical maintenance',
       icon: '⚡',
       background: 'bg-gradient-to-br from-purple-500 to-purple-700'
     }
   ];
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section with Cinematic Feel */}
-      <div className="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white overflow-hidden">
-        {/* Particle-like Background Effect */}
-        <div className="absolute inset-0 opacity-20">
-          {[...Array(50)].map((_, i) => (
-            <div 
-              key={i} 
-              className="absolute bg-white rounded-full opacity-10"
-              style={{
-                width: `${Math.random() * 10}px`,
-                height: `${Math.random() * 10}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `float ${2 + Math.random() * 3}s infinite`
-              }}
-            />
-          ))}
-        </div>
+  const testimonials = [
+    {
+      name: 'Sarah Johnson',
+      role: 'Working Professional',
+      quote: 'CoderCraftes has completely transformed how I manage home services. It\'s like having a personal assistant for my home!',
+      avatar: '👩‍💼'
+    },
+    {
+      name: 'Michael Chen',
+      role: 'Busy Entrepreneur',
+      quote: 'The platform\'s AI matching is incredible. I always get the perfect service provider for my needs.',
+      avatar: '👨‍💻'
+    },
+    {
+      name: 'Emily Rodriguez',
+      role: 'Homemaker',
+      quote: 'Finally, a solution that makes home maintenance simple, transparent, and reliable.',
+      avatar: '👩‍🍳'
+    }
+  ];
 
-        <div className="container mx-auto px-4 py-24 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
-              Reimagining <br />
-              <span className="text-yellow-300">Home Services</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-12 text-gray-200 leading-relaxed">
-              Where Technology Meets Home Care - Personalized, Intelligent, Seamless
-            </p>
-            <div className="space-x-4">
-              <Link 
-                to="/register" 
-                className="px-10 py-4 bg-white text-blue-700 font-bold rounded-full hover:bg-gray-100 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-block"
-              >
-                Join Now
-              </Link>
-              <Link 
-                to="/login" 
-                className="px-10 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-blue-700 transition duration-300 inline-block"
-              >
-                Log In
-              </Link>
-            </div>
+  const platformFeatures = [
+    {
+      title: 'Comprehensive Dashboard',
+      description: 'Your all-in-one hub for home services, bookings, and management',
+      icon: '📊',
+      color: 'bg-gradient-to-r from-blue-500 to-indigo-600'
+    },
+    {
+      title: 'Smart Booking System',
+      description: 'Intelligent scheduling with real-time availability and personalized recommendations',
+      icon: '🤖',
+      color: 'bg-gradient-to-r from-green-500 to-emerald-600'
+    },
+    {
+      title: 'Secure Payments',
+      description: 'Multiple payment options and transparent pricing',
+      icon: '💳',
+      color: 'bg-gradient-to-r from-purple-500 to-violet-600'
+    },
+    {
+      title: 'Service Tracking',
+      description: 'Real-time updates and seamless communication with service providers',
+      icon: '📍',
+      color: 'bg-gradient-to-r from-rose-500 to-pink-600'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <Link 
+            to="/" 
+            className="text-3xl font-bold text-gray-800 hover:text-blue-600 transition duration-300"
+          >
+            CoderCraftes
+          </Link>
+          <div className="flex items-center space-x-4">
+            <Link 
+              to="/login" 
+              className="text-gray-700 hover:text-blue-600 px-4 py-2 rounded-lg transition duration-300"
+            >
+              Login
+            </Link>
+            <Link 
+              to="/register" 
+              className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
+            >
+              Get Started
+            </Link>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Innovative Features Section */}
-      <div className="container mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
-          Revolutionary Features
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {innovativeFeatures.map((feature, index) => (
-            <div 
-              key={index}
-              className={`relative group overflow-hidden rounded-2xl shadow-lg transform transition duration-300 hover:scale-105 ${
-                activeFeature === index ? 'scale-105 shadow-2xl' : ''
-              }`}
-              onMouseEnter={() => setActiveFeature(index)}
-              onMouseLeave={() => setActiveFeature(null)}
-            >
-              <div className={`absolute inset-0 ${feature.color} opacity-90`}></div>
-              <div className="relative z-10 p-6 text-white">
-                <div className="text-6xl mb-4 opacity-80">{feature.icon}</div>
-                <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-sm opacity-90">{feature.description}</p>
-              </div>
-            </div>
-          ))}
+      {/* Hero Section */}
+      <div className="container mx-auto px-6 pt-16 pb-24 text-center">
+        <h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-800 leading-tight">
+          Transform Your Home <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700">
+            Service Experience
+          </span>
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+          Unlock a world of seamless home services, personalized solutions, and hassle-free maintenance - 
+          all at your fingertips
+        </p>
+        <div className="space-x-4">
+          <Link 
+            to="/register" 
+            className="px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 inline-block"
+          >
+            Unlock Full Platform
+          </Link>
         </div>
       </div>
 
-      {/* Services Section */}
-      <div className="container mx-auto px-4 py-16 bg-gray-100">
+      {/* Core Services Section */}
+      <div className="container mx-auto px-6 py-20 bg-gray-50">
         <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
           Our Core Services
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {serviceCategories.map((service, index) => (
+          {coreServices.map((service, index) => (
             <div 
               key={index} 
-              className={`relative group overflow-hidden rounded-2xl shadow-lg transform transition duration-300 hover:scale-105`}
+              className="relative group overflow-hidden rounded-2xl shadow-lg transform transition duration-300 hover:scale-105"
             >
               <div className={`absolute inset-0 ${service.background} opacity-80`}></div>
               <div className="relative z-10 p-6 text-white h-full flex flex-col">
@@ -160,8 +155,71 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      {/* Platform Features Section */}
+      <div className="container mx-auto px-6 py-20">
+        <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
+          What Awaits You Inside
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {platformFeatures.map((feature, index) => (
+            <div 
+              key={index}
+              className="relative group overflow-hidden rounded-2xl shadow-lg transform transition duration-300 hover:scale-105"
+            >
+              <div 
+                className={`absolute inset-0 ${feature.color} opacity-90`}
+              />
+              <div className="relative z-10 p-6 text-white h-full flex flex-col">
+                <div className="text-6xl mb-4 opacity-80">{feature.icon}</div>
+                <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
+                <p className="text-sm opacity-90 flex-grow">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="container mx-auto px-6 py-20 bg-gray-50">
+        <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
+          What Our Users Say
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div 
+              key={index}
+              className="bg-white rounded-2xl shadow-lg p-6 text-center transform transition duration-300 hover:scale-105"
+            >
+              <div className="text-6xl mb-4 opacity-80">{testimonial.avatar}</div>
+              <p className="text-gray-600 mb-4 italic">"{testimonial.quote}"</p>
+              <div>
+                <h3 className="font-bold text-gray-800">{testimonial.name}</h3>
+                <p className="text-gray-500 text-sm">{testimonial.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Signup Call to Action */}
+      <div className="container mx-auto px-6 py-24 text-center">
+        <h2 className="text-4xl font-bold mb-6 text-gray-800">
+          Your Complete Home Services Solution
+        </h2>
+        <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+          Join thousands of satisfied homeowners who have simplified their home maintenance 
+          with our intelligent, comprehensive platform
+        </p>
+        <Link 
+          to="/register" 
+          className="px-12 py-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 inline-block"
+        >
+          Create Your Account Now
+        </Link>
+      </div>
+
+     {/* Footer */}
+     <footer className="bg-gray-900 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
