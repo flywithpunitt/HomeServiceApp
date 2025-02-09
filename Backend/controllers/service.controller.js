@@ -1,4 +1,4 @@
-const Service = require('../models/service.model');
+const Service = require('../models/Service.model');
 
 const serviceController = {
   // Create a new service (for providers)
