@@ -8,7 +8,6 @@ const errorHandler = require('./middleware/error.middleware');
 const authRoutes = require('./routes/auth.routes');
 const serviceRoutes = require('./routes/service.routes');
 const bookingRoutes = require('./routes/booking.routes');
-const userRoutes = require('./routes/user.routes');
 
 dotenv.config();
 const app = express();
@@ -23,8 +22,6 @@ connectDB();
 // Route Middlewares
 app.use('/api/auth', authRoutes);
 app.use('/api/services', serviceRoutes);
-app.use('/api/bookings', bookingRoutes);
-app.use('/api/users', userRoutes);
 
 // Error Handler
 app.use(errorHandler);

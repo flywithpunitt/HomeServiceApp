@@ -76,7 +76,6 @@ const ProviderDashboard = () => {
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <h1 className="text-2xl font-bold text-gray-900">Provider Dashboard</h1>
               </div>
             </div>
           </div>
