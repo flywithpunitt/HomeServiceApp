@@ -98,7 +98,7 @@ serviceSchema.methods.getDistance = function(coords) {
         query: { _id: this._id }
       }
     }
-  ]);
+  ]); 
 };
 
 module.exports = mongoose.model('Service', serviceSchema);
